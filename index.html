@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Chess - Xadrez Minecraft</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/pieces/w_king.png">
+</head>
+<body>
+
+  <header>
+    <div class="title-container">
+      <img src="assets/pieces/w_king.png" alt="King Steve" class="title-icon">
+      <h1>MINECRAFT CHESS</h1>
+      <img src="assets/pieces/b_king.png" alt="Herobrine King" class="title-icon">
+    </div>
+    <div class="subtitle">Steve & Alex vs Herobrine & Ender Queen</div>
+  </header>
+
+  <main class="app-container">
+    <!-- Left Sidebar: Status, Turn & Captured Pieces -->
+    <aside class="left-sidebar">
+      <div class="mc-panel">
+        <div class="panel-header">
+          <span>VEZ DE JOGAR</span>
+        </div>
+        <div class="player-card">
+          <img id="current-turn-avatar" src="assets/pieces/w_king.png" alt="Turn Avatar" class="player-avatar">
+          <div class="player-info">
+            <span id="current-turn-name" class="player-name">King Steve</span>
+            <span class="player-side">Brancas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Captured Pieces Trays -->
+      <div class="mc-panel">
+        <div class="panel-header">
+          <span>CAPTIVIDADE</span>
+        </div>
+        
+        <div class="setting-label">Peças Negras Capturadas <span id="score-diff-white" class="score-diff"></span></div>
+        <div id="captured-by-white" class="captured-tray"></div>
+
+        <div class="setting-label" style="margin-top: 10px;">Peças Brancas Capturadas <span id="score-diff-black" class="score-diff"></span></div>
+        <div id="captured-by-black" class="captured-tray"></div>
+      </div>
+
+      <!-- Move History -->
+      <div class="mc-panel">
+        <div class="panel-header">
+          <span>HISTÓRICO</span>
+        </div>
+        <div id="history-list" class="history-container"></div>
+      </div>
+    </aside>
+
+    <!-- Center: Board & Main Status -->
+    <section class="board-section">
+      <div id="game-status-box" class="status-box normal-status">
+        White to move
+      </div>
+
+      <div class="board-outer-frame">
+        <div id="chessboard"></div>
+      </div>
+    </section>
+
+    <!-- Right Sidebar: Controls & Game Settings -->
+    <aside class="right-sidebar">
+      <div class="mc-panel">
+        <div class="panel-header">
+          <span>CONFIGURAÇÕES</span>
+        </div>
+
+        <div class="setting-row">
+          <label class="setting-label" for="mode-select">Modo de Jogo:</label>
+          <select id="mode-select" class="mc-select">
+            <option value="pve">Jogador vs Bot Minecraft</option>
+            <option value="pvp">Dois Jogadores (Local)</option>
+          </select>
+        </div>
+
+        <div id="bot-config-panel">
+          <div class="setting-row">
+            <label class="setting-label" for="difficulty-select">Dificuldade do Bot:</label>
+            <select id="difficulty-select" class="mc-select">
+              <option value="easy">Zumbi (Fácil)</option>
+              <option value="medium" selected>Esqueleto (Médio)</option>
+              <option value="hard">Herobrine (Difícil)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <label class="setting-label" for="color-select">Jogar de:</label>
+          <select id="color-select" class="mc-select">
+            <option value="w" selected>Brancas (Steve)</option>
+            <option value="b">Negras (Herobrine)</option>
+            <option value="random">Aleatório</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mc-panel" style="display: flex; flex-direction: column; gap: 8px;">
+        <button id="btn-new-game" class="mc-button btn-primary">⚔️ NOVO JOGO</button>
+        <button id="btn-undo" class="mc-button">↩️ DESFAZER</button>
+        <button id="btn-flip" class="mc-button">🔄 GIRAR TABULEIRO</button>
+        <button id="btn-sound" class="mc-button">🔊 SOM: ATIVADO</button>
+      </div>
+
+      <!-- Piece Guide Lore Panel -->
+      <div class="mc-panel">
+        <div class="panel-header">
+          <span>PEÇAS MINECRAFT</span>
+        </div>
+        <div style="font-size: 16px; color: #b0a8a0; line-height: 1.4;">
+          <p><strong style="color: #ffdf00;">Steve / Zumbi:</strong> Peão</p>
+          <p><strong style="color: #ffdf00;">Torres:</strong> Torre Diorito / Citadela Obsidiana</p>
+          <p><strong style="color: #ffdf00;">Cavalos:</strong> Steve / Esqueleto a cavalo</p>
+          <p><strong style="color: #ffdf00;">Bispos:</strong> Clérigo / Evocador Illager</p>
+          <p><strong style="color: #ffdf00;">Damas:</strong> Rainha Alex / Rainha Ender</p>
+          <p><strong style="color: #ffdf00;">Reis:</strong> Rei Steve / Rei Herobrine</p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Pawn Promotion Modal -->
+  <div id="promotion-modal" class="modal-overlay hidden">
+    <div class="promotion-box">
+      <div class="promotion-title">ESCOLHA A PROMOÇÃO DO PEÃO</div>
+      <div id="promotion-options" class="promotion-options-container"></div>
+    </div>
+  </div>
+
+  <!-- Modular Scripts -->
+  <script src="js/constants.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/rules.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

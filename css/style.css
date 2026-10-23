@@ -1,0 +1,623 @@
+/* Minecraft Chess - Custom Pixel & Minecraft Aesthetics */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --mc-font: 'VT323', monospace;
+  --mc-pixel-font: 'Press Start 2P', monospace;
+  --mc-bg-dark: #191614;
+  --mc-panel-bg: #2b2622;
+  --mc-panel-border-light: #524840;
+  --mc-panel-border-dark: #141210;
+  
+  --mc-wood-light: #d8b888;
+  --mc-wood-light-border: #c8a370;
+  --mc-wood-dark: #6e4624;
+  --mc-wood-dark-border: #4d2f16;
+  
+  --mc-btn-bg: #747474;
+  --mc-btn-border-light: #b4b4b4;
+  --mc-btn-border-dark: #373737;
+  --mc-btn-hover: #8e8e8e;
+  
+  --mc-green: #55ff55;
+  --mc-red: #ff5555;
+  --mc-gold: #ffaa00;
+  --mc-diamond: #55ffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background-color: var(--mc-bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(30, 25, 20, 0.8) 0%, rgba(10, 8, 7, 0.98) 100%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 2px, transparent 2px, transparent 4px);
+  color: #f0f0f0;
+  font-family: var(--mc-font);
+  font-size: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+/* Header & Title */
+header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title-icon {
+  width: 42px;
+  height: 42px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+}
+
+h1 {
+  font-family: var(--mc-pixel-font);
+  font-size: 24px;
+  color: #ffdf00;
+  text-shadow: 3px 3px 0 #3a3200, -1px -1px 0 #000;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #aaaaaa;
+  margin-top: 4px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Minecraft Panels */
+.mc-panel {
+  background: var(--mc-panel-bg);
+  border: 4px solid var(--mc-panel-border-dark);
+  border-top-color: var(--mc-panel-border-light);
+  border-left-color: var(--mc-panel-border-light);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
+  padding: 14px;
+}
+
+/* Left & Right Sidebars */
+.left-sidebar, .right-sidebar {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel-header {
+  font-family: var(--mc-pixel-font);
+  font-size: 13px;
+  color: var(--mc-gold);
+  text-shadow: 2px 2px 0 #3f2a00;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--mc-panel-border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Player Info Card */
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #1e1b18;
+  padding: 8px 12px;
+  border: 2px solid #3c352f;
+  margin-bottom: 8px;
+}
+
+.player-avatar {
+  width: 44px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-name {
+  font-family: var(--mc-pixel-font);
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.player-side {
+  font-size: 16px;
+  color: #888888;
+}
+
+/* Captured Inventory Trays */
+.captured-tray {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  background: #141210;
+  border: 2px solid #3c352f;
+  border-bottom-color: #554a41;
+  border-right-color: #554a41;
+  padding: 4px 6px;
+  border-radius: 2px;
+}
+
+.captured-icon {
+  width: 22px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+}
+
+.score-diff {
+  font-family: var(--mc-pixel-font);
+  font-size: 11px;
+  color: var(--mc-gold);
+  margin-left: 6px;
+}
+
+/* Board Center Section */
+.board-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Status Banner */
+.status-box {
+  width: 100%;
+  max-width: 540px;
+  padding: 10px 14px;
+  text-align: center;
+  font-family: var(--mc-pixel-font);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: 3px solid #000;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.5);
+  transition: all 0.2s ease;
+}
+
+.normal-status {
+  background: #2b442b;
+  color: #aaffaa;
+  border-color: #1a2a1a;
+}
+
+.check-status {
+  background: #7a2222;
+  color: #ffcccc;
+  border-color: #4a1515;
+  animation: pulseCheck 1s infinite alternate;
+}
+
+.game-over-status {
+  background: #7a5a00;
+  color: #ffeb77;
+  border-color: #443200;
+}
+
+.thinking-status {
+  background: #3a2b55;
+  color: #ddbbf5;
+  border-color: #221a33;
+}
+
+@keyframes pulseCheck {
+  from { background-color: #7a2222; transform: scale(1); }
+  to { background-color: #aa2222; transform: scale(1.02); }
+}
+
+/* Board Container */
+.board-outer-frame {
+  background: #3e3832;
+  padding: 14px;
+  border: 6px solid #1a1715;
+  border-top-color: #5c534b;
+  border-left-color: #5c534b;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.8),
+    inset 0 0 10px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+#chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 64px);
+  grid-template-rows: repeat(8, 64px);
+  width: 512px;
+  height: 512px;
+  border: 4px solid #1c140e;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.7);
+  background: #1c140e;
+}
+
+/* Squares */
+.chess-square {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Birch Wood Planks (Light) */
+.light-square {
+  background-color: var(--mc-wood-light);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.25), inset -1px -1px 0 var(--mc-wood-light-border);
+}
+
+/* Dark Oak Wood Planks (Dark) */
+.dark-square {
+  background-color: var(--mc-wood-dark);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.08), inset -1px -1px 0 var(--mc-wood-dark-border);
+}
+
+/* Coordinate Labels on Board */
+.coord-label {
+  position: absolute;
+  font-family: var(--mc-pixel-font);
+  font-size: 8px;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.light-square .coord-label {
+  color: #4d2f16;
+}
+
+.dark-square .coord-label {
+  color: #d8b888;
+}
+
+.file-label {
+  bottom: 2px;
+  right: 3px;
+}
+
+.rank-label {
+  top: 2px;
+  left: 3px;
+}
+
+/* Pieces Styling */
+.chess-piece {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 125%;
+  max-width: 105%;
+  object-fit: contain;
+  pointer-events: auto;
+  cursor: grab;
+  filter: drop-shadow(0 4px 4px rgba(0,0,0,0.45));
+  transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.chess-piece:hover {
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.6));
+}
+
+.chess-piece.dragging {
+  cursor: grabbing;
+  opacity: 0.4;
+}
+
+/* Highlights */
+.selected-square {
+  box-shadow: inset 0 0 0 3px var(--mc-diamond), 0 0 8px var(--mc-diamond) !important;
+  background-color: rgba(85, 255, 255, 0.25) !important;
+}
+
+.last-move-square {
+  box-shadow: inset 0 0 0 3px var(--mc-gold) !important;
+}
+
+.king-in-check {
+  box-shadow: inset 0 0 0 3px var(--mc-red), 0 0 12px var(--mc-red) !important;
+  animation: kingDamageFlash 0.8s infinite alternate !important;
+}
+
+@keyframes kingDamageFlash {
+  0% { background-color: rgba(255, 0, 0, 0.35); }
+  100% { background-color: rgba(255, 0, 0, 0.7); }
+}
+
+/* Move Hints */
+.move-hint {
+  width: 18px;
+  height: 18px;
+  background: var(--mc-green);
+  border: 2px solid #1a551a;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.85;
+  box-shadow: 0 0 6px var(--mc-green);
+  z-index: 95;
+}
+
+.capture-hint {
+  width: 54px;
+  height: 54px;
+  border: 3px solid var(--mc-red);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 8px var(--mc-red), inset 0 0 8px rgba(255, 85, 85, 0.4);
+  animation: capturePulse 1s infinite alternate;
+  z-index: 95;
+}
+
+@keyframes capturePulse {
+  from { transform: scale(0.92); opacity: 0.8; }
+  to { transform: scale(1.04); opacity: 1; }
+}
+
+/* Minecraft Buttons */
+.mc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mc-pixel-font);
+  font-size: 11px;
+  color: #e0e0e0;
+  text-shadow: 2px 2px 0 #202020;
+  background: var(--mc-btn-bg);
+  border: 3px solid var(--mc-btn-border-dark);
+  border-top-color: var(--mc-btn-border-light);
+  border-left-color: var(--mc-btn-border-light);
+  padding: 8px 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 0.05s ease;
+  width: 100%;
+}
+
+.mc-button:hover {
+  background: var(--mc-btn-hover);
+  color: #ffffff;
+}
+
+.mc-button:active {
+  border-color: var(--mc-btn-border-light);
+  border-top-color: var(--mc-btn-border-dark);
+  border-left-color: var(--mc-btn-border-dark);
+  transform: translateY(2px);
+}
+
+.btn-primary {
+  background: #3b6b3b;
+  border-color: #1a381a;
+  border-top-color: #5ca05c;
+  border-left-color: #5ca05c;
+  color: #eaffea;
+}
+
+.btn-primary:hover {
+  background: #478247;
+}
+
+/* Select Inputs */
+.setting-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.setting-label {
+  font-family: var(--mc-pixel-font);
+  font-size: 10px;
+  color: #b0a8a0;
+}
+
+.mc-select {
+  font-family: var(--mc-font);
+  font-size: 18px;
+  background: #181513;
+  color: #f0f0f0;
+  border: 2px solid #50463e;
+  padding: 6px 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.mc-select:focus {
+  border-color: var(--mc-diamond);
+}
+
+/* Move History Panel */
+.history-container {
+  max-height: 240px;
+  overflow-y: auto;
+  background: #191614;
+  border: 2px solid #3c352f;
+  padding: 6px 8px;
+}
+
+.history-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.history-container::-webkit-scrollbar-track {
+  background: #141210;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+  background: #524840;
+  border: 1px solid #141210;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 2px 4px;
+  border-bottom: 1px solid #282420;
+}
+
+.history-row:nth-child(even) {
+  background: #1f1b18;
+}
+
+.history-num {
+  width: 38px;
+  color: #888888;
+  font-family: var(--mc-pixel-font);
+  font-size: 9px;
+}
+
+.history-move {
+  flex: 1;
+  font-family: var(--mc-pixel-font);
+  font-size: 10px;
+  color: #dddddd;
+}
+
+.white-move {
+  color: #ffffff;
+}
+
+.black-move {
+  color: #ffaa00;
+}
+
+/* Promotion Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.hidden {
+  display: none !important;
+}
+
+.promotion-box {
+  background: var(--mc-panel-bg);
+  border: 6px solid var(--mc-panel-border-dark);
+  border-top-color: var(--mc-panel-border-light);
+  border-left-color: var(--mc-panel-border-light);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  max-width: 480px;
+}
+
+.promotion-title {
+  font-family: var(--mc-pixel-font);
+  font-size: 14px;
+  color: var(--mc-gold);
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 0 #332200;
+}
+
+.promotion-options-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.promo-choice {
+  background: #1e1b18;
+  border: 3px solid #3c352f;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.1s ease;
+  width: 95px;
+}
+
+.promo-choice img {
+  width: 60px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.promo-choice .promo-label {
+  font-family: var(--mc-pixel-font);
+  font-size: 9px;
+  color: #e0e0e0;
+  margin-top: 8px;
+}
+
+.promo-choice:hover {
+  transform: translateY(-4px);
+  border-color: var(--mc-diamond);
+  background: #2b2520;
+}
+
+/* Responsiveness */
+@media (max-width: 1080px) {
+  .app-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .left-sidebar, .right-sidebar {
+    width: 512px;
+  }
+}
+
+@media (max-width: 560px) {
+  #chessboard {
+    grid-template-columns: repeat(8, 44px);
+    grid-template-rows: repeat(8, 44px);
+    width: 352px;
+    height: 352px;
+  }
+  .chess-square {
+    width: 44px;
+    height: 44px;
+  }
+  .left-sidebar, .right-sidebar {
+    width: 352px;
+  }
+  .status-box {
+    max-width: 352px;
+    font-size: 11px;
+  }
+}
