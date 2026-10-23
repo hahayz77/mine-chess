@@ -1,3 +1,5 @@
+![Minecraft Chess](assets/extract_pieces/minechess.jpeg)
+
 # ⚔️ Minecraft Chess (Xadrez Minecraft)
 
 Um jogo de xadrez completo ambientado no universo de Minecraft, desenvolvido em **HTML5**, **CSS3** e **JavaScript modular**.
